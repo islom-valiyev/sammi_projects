@@ -1,8 +1,7 @@
+import './search_panel.css'
 function SearchPanel() {
   return (
-    <div>
-      <h1>SearchPanel</h1>
-    </div>
+    <input type="text" className="form-control search-input"  placeholder="kinolarni qidirish"/>
   )
 }
 

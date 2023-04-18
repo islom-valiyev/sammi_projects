@@ -5,15 +5,15 @@ import AppFilter from "../app_filter/app_filter"
 
 const App = () => {
     return (
-    <div className="app">
-        <div className="content">
-            <AppInfo />
+        <div className="app font-monospace">
+            <div className="content">
+                <AppInfo />
+                <div className='cearch_panel'>
+                    <SearchPanel />
+                    <AppFilter />
+                </div>
+            </div>
         </div>
-        <div>
-            <SearchPanel />
-            <AppFilter />
-        </div>
-    </div>
     )
 }
 export default App  

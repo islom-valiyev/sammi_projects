@@ -1,3 +1,4 @@
+import './app_filter.css'
 const AppFilter = () => {
   return (
     <div>
