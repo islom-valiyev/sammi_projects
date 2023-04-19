@@ -1,15 +1,18 @@
-
 import './movie_list.css'
 import MovieListItem from '../movie_list_item/movie_list_item'
 
-const MovieList = () => {
+const MovieList = ({data}) => {
   return (
-    <div className='movie_list'>
-      <MovieListItem/>
-      <MovieListItem/>
-      <MovieListItem/>
+    <ul className='movie_list'>
+ {/* bunda biz map orqali hamma datalarni olyabmiz */}
+      {
+        data.map(item=>(
+      <MovieListItem name = {item.name} viewers = {item.viewers}  favourete ={item.favourete}/>
 
-    </div>
+        ))
+      }
+
+    </ul>
   )
 }
 
