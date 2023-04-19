@@ -8,6 +8,7 @@ const MovieList = ({data}) => {
       {
         data.map(item=>(
       <MovieListItem name = {item.name} viewers = {item.viewers}  favourete ={item.favourete}/>
+      // <MovieListItem{...item} /> bu ikkinichi yul
 
         ))
       }
