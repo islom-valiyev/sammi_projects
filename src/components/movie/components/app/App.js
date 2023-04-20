@@ -6,10 +6,10 @@ import MovieList from '../movie_list/movie_list'
 import MoviesAddForm from '../movies_add_form/movies_add_form'
 const App = () => {
     const data =[
-        {name :"Avanger", viewers : '800', favourete :false},
-        {name :"Breaking bad", viewers : '600', favourete :true},
-        {name :"Spider man", viewers : '545', favourete :false},
-        {name :"John ", viewers : '785', favourete :true}
+        {name :"Avanger", viewers : '800', favourete :false , id:1},
+        {name :"Breaking bad", viewers : '600', favourete :true,id:2},
+        {name :"Spider man", viewers : '545', favourete :false,id:3},
+        {name :"John ", viewers : '785', favourete :true,id:4}
 
     ]
 
