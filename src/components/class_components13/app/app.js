@@ -1,6 +1,6 @@
 
-import { Component } from 'react'
-import Counter from "../counter/counter"
+// import { Component } from 'react'
+// import Counter from "../counter/counter"
 import CounterNew from '../counter/counter_new'
 // class User extends Component {
 //     // constructor(props) {
