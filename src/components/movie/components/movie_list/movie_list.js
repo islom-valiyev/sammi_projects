@@ -7,7 +7,7 @@ const MovieList = ({ data }) => {
       {/* bunda biz map orqali hamma datalarni olyabmiz */}
       {
         data.map(item => (
-          <MovieListItem key={item.id} name={item.name} viewers={item.viewers} favourite={item.favourite} />
+          <MovieListItem key={item.id} name={item.name} viewers={item.viewers} favourite={item.favourite} onDelate ={()=> console.log("hello")}/>
         ))
       }
     </ul>
