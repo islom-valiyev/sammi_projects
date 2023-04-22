@@ -3,25 +3,24 @@ import { Component } from 'react'
 class MovieListItem extends Component {
     constructor(props) {
         super(props)
-        this.state = { favourite: false ,like:false}
+        this.state = { favourite: false, like: false }
     }
 
-    onFavourite=()=>{
-        this.setState(({favourite})=>({
+    onFavourite = () => {
+        this.setState(({ favourite }) => ({
             favourite: !favourite,
         }))
-        console.log("dd");
     }
-    onLike=()=>{
-        this.setState(({like})=>({
-            like:!like,
+    onLike = () => {
+        this.setState(({ like }) => ({
+            like: !like,
         }))
     }
     render() {
         const props = this.props
-        const { favourite,like } = this.state
+        const { favourite, like } = this.state
         return (
-            <li className={`list-group-item d-flex justify-content-between ${favourite && 'favourite'} ${like  && 'like'}`}>
+            <li className={`list-group-item d-flex justify-content-between ${favourite && 'favourite'} ${like && 'like'}`}>
                 <span className='list-group-item-label' onClick={this.onLike}> {props.name}</span>
                 <input type="number" className='list-group-item-input' defaultValue={props.viewers} />
                 <div className='d-flex justify-content-center align-items-center'>
