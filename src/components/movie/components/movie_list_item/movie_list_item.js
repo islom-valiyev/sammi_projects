@@ -3,7 +3,7 @@ import { Component } from 'react'
 class MovieListItem extends Component {
     constructor(props) {
         super(props)
-        this.state = { favourite: false }
+        this.state = { favourite: false ,like:false}
     }
 
     onFavourite=()=>{
@@ -12,12 +12,17 @@ class MovieListItem extends Component {
         }))
         console.log("dd");
     }
+    onLike=()=>{
+        this.setState(({like})=>({
+            like:!like,
+        }))
+    }
     render() {
         const props = this.props
-        const { favourite } = this.state
+        const { favourite,like } = this.state
         return (
-            <li className={`list-group-item d-flex justify-content-between ${favourite && 'favourite'}`}>
-                <span className='list-group-item-label'> {props.name}</span>
+            <li className={`list-group-item d-flex justify-content-between ${favourite && 'favourite'} ${like  && 'like'}`}>
+                <span className='list-group-item-label' onClick={this.onLike}> {props.name}</span>
                 <input type="number" className='list-group-item-input' defaultValue={props.viewers} />
                 <div className='d-flex justify-content-center align-items-center'>
                     <button type='button' className='btn-cookie btn-sm' onClick={this.onFavourite}>
