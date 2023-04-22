@@ -5,6 +5,13 @@ class MovieListItem extends Component {
         super(props)
         this.state = { favourite: false }
     }
+
+    onFavourite=()=>{
+        this.setState(({favourite})=>({
+            favourite: !favourite,
+        }))
+        console.log("dd");
+    }
     render() {
         const props = this.props
         const { favourite } = this.state
@@ -13,7 +20,7 @@ class MovieListItem extends Component {
                 <span className='list-group-item-label'> {props.name}</span>
                 <input type="number" className='list-group-item-input' defaultValue={props.viewers} />
                 <div className='d-flex justify-content-center align-items-center'>
-                    <button type='button' className='btn-cookie btn-sm'>
+                    <button type='button' className='btn-cookie btn-sm' onClick={this.onFavourite}>
                         <i className='fas fa-cookie'></i>
                     </button>
                     <button type='button' className='btn-trash btn-sm'>
