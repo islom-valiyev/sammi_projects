@@ -29,15 +29,10 @@ class App extends Component {
         });
     };
 
-    addForm = (e, item) => {
-        e.preventDefault()
-this.setState(({data})=>{
-    console.log(item);
-    const newArray =[...data,{...item ,id:uuidv4()}]
-return{
-    data :newArray
-}
-})        
+    addForm = item => {
+        this.setState(({ data }) =>( {
+            data: [...data, { ...item, id: uuidv4() }],
+        }))
     }
 
     //onDelete = (id) => {
