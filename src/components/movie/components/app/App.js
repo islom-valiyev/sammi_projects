@@ -20,12 +20,18 @@ class App extends Component {
         }
     }
     onDelate = (id) => {
-        console.log(id);
-
-    }
+        this.setState(({data}) => {
+            const index = data.findIndex(c => c.id === id); // id ga mos keluvchi element indeksi
+            if (index === -1) { // agar element topilmagan bo'lsa
+                return { data }; // hech nima qilmaslik
+            }
+            data.splice(index, 1); // topilgan indeksdagi elementni o'chirish
+            return { data };
+        });
+    };
 
     render() {
-        const {data ,onDelate} = this.state
+        const {data } = this.state
         return (
             <div className="app font-monospace">
                 <div className="content">
@@ -34,7 +40,7 @@ class App extends Component {
                         <SearchPanel />
                         <AppFilter />
                     </div>
-                    <MovieList data={data} onDelate={onDelate} />
+                    <MovieList data={data} onDelate={this.onDelate} />
                     <MoviesAddForm />
                 </div>
             </div>
