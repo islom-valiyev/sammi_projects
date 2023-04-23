@@ -1,4 +1,5 @@
 import { Component } from "react"
+import { v4 as uuidv4 } from 'uuid';
 import AppInfo from "../app_info/App_info"
 import SearchPanel from "../search_panel/search_panel"
 import AppFilter from "../app_filter/app_filter"
@@ -24,9 +25,20 @@ class App extends Component {
         this.setState(({ data }) => {
             const newArray = data.filter(c => c.id !== id);
             console.log(newArray);
-            return { data:data.filter(c => c.id !== id) };
+            return { data: data.filter(c => c.id !== id) };
         });
     };
+
+    addForm = (e, item) => {
+        e.preventDefault()
+this.setState(({data})=>{
+    console.log(item);
+    const newArray =[...data,{...item ,id:uuidv4()}]
+return{
+    data :newArray
+}
+})        
+    }
 
     //onDelete = (id) => {
     //     this.setState(({data}) => {
@@ -39,10 +51,10 @@ class App extends Component {
     //         return { data };
     //     });
     // };
-    
+
 
     render() {
-        const {data } = this.state
+        const { data } = this.state
         return (
             <div className="app font-monospace">
                 <div className="content">
@@ -52,7 +64,7 @@ class App extends Component {
                         <AppFilter />
                     </div>
                     <MovieList data={data} onDelate={this.onDelete} />
-                    <MoviesAddForm />
+                    <MoviesAddForm addForm={this.addForm} />
                 </div>
             </div>
         )

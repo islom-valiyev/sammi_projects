@@ -4,7 +4,7 @@ class moviesAddForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "kino",
+      name: " ",
       views: ""
     }
   }
@@ -15,10 +15,11 @@ class moviesAddForm extends Component {
   }
   render() {
     const { name, views } = this.state
+    const {addForm }= this.props
     return (
       <div className='movies-add-form'>
         <h3>Yangi kino qushish</h3>
-        <form className='add-form d-flex'>
+        <form className='add-form d-flex' onSubmit={e=>addForm(e,{name, viewers :views})}>
           <input type="text" className='form-control new-post-label' placeholder='Qanday kino' onChange={this.changeHandele} name='name' value={name} />
           <input type="number" className='form-control new-post-label' placeholder='Nechi marotaba kurilgan' onChange={this.changeHandele} name='views' value={views} />
           <button type="submit" className='btn btn-outline-dark'>
