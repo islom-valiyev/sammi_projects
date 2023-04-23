@@ -15,20 +15,31 @@ class App extends Component {
                 { name: "Avanger", viewers: '800', favourete: false, id: 1 },
                 { name: "Breaking bad", viewers: '600', favourete: true, id: 2 },
                 { name: "Spider man", viewers: '545', favourete: false, id: 3 },
-                { name: "John ", viewers: '785', favourete: true, id: 4 }
+                { name: "John ", viewers: '785', favourete: true, id: 4 },
             ]
         }
     }
-    onDelate = (id) => {
-        this.setState(({data}) => {
-            const index = data.findIndex(c => c.id === id); // id ga mos keluvchi element indeksi
-            if (index === -1) { // agar element topilmagan bo'lsa
-                return { data }; // hech nima qilmaslik
-            }
-            data.splice(index, 1); // topilgan indeksdagi elementni o'chirish
-            return { data };
+
+    onDelete = (id) => {
+        this.setState(({ data }) => {
+            const newArray = data.filter(c => c.id !== id);
+            console.log(newArray);
+            return { data:data.filter(c => c.id !== id) };
         });
     };
+
+    //onDelete = (id) => {
+    //     this.setState(({data}) => {
+    //         const index = data.findIndex(c => c.id === id); // id ga mos keluvchi element indeksi
+    //         console.log(data);
+    //         if (index === -1) { // agar element topilmagan bo'lsa
+    //             return { data }; // hech nima qilmaslik
+    //         }
+    //         data.splice(index, 1); // topilgan indeksdagi elementni o'chirish
+    //         return { data };
+    //     });
+    // };
+    
 
     render() {
         const {data } = this.state
@@ -40,7 +51,7 @@ class App extends Component {
                         <SearchPanel />
                         <AppFilter />
                     </div>
-                    <MovieList data={data} onDelate={this.onDelate} />
+                    <MovieList data={data} onDelate={this.onDelete} />
                     <MoviesAddForm />
                 </div>
             </div>
