@@ -1,5 +1,4 @@
 import { Component } from "react"
-import { v4 as uuidv4 } from 'uuid';
 import AppInfo from "../app_info/App_info"
 import SearchPanel from "../search_panel/search_panel"
 import AppFilter from "../app_filter/app_filter"
@@ -31,7 +30,7 @@ class App extends Component {
 
     addForm = item => {
         this.setState(({ data }) =>( {
-            data: [...data, { ...item, id: uuidv4() }],
+            data: [...data, { ...item }],
         }))
     }
 
