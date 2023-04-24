@@ -17,10 +17,11 @@ class App extends Component {
             data: [
                 { name: "Avenger", viewers: '800', favourite: false, id: 1, like: false },
                 { name: "Breaking Bad", viewers: '600', favourite: false, id: 2, like: false },
-                { name: "Spider-Man", viewers: '545', favourite: false, id: 3, like: false },
+                { name: "Spider-Man", viewers: '545', favourite: false, id: 3, like: true },
                 { name: "John", viewers: '785', id: 4, like: false, favourite: false },
             ],
-            term:'',
+            term: '',
+            filter: 'mostviewers',
         };
     }
 
@@ -61,41 +62,46 @@ class App extends Component {
 
     searchHandle = (arr, term) => {
         if (term.length === 0) {
-          return arr;
+            return arr;
         }
         const lowerCaseTerm = term.toLowerCase();
         return arr.filter((item) => item.name.toLowerCase().indexOf(lowerCaseTerm) > -1);
-      };
-      
-      UpdateTermHandler=(term)=>{
-        this.setState({term})
+    };
+
+    UpdateTermHandler = (term) => {
+        this.setState({ term })
+    }
+
+    filterHandler = (arr, filter) => {
+        switch (filter) {
+            case 'popular':
+                return arr.filter(c => c.like)
+            case 'mostviewers':
+                return arr.filter(c => c.viewers > 500)
+            default:
+                return arr
+        }
+    }
+
+    UpdateFilterHandler = (filter) => {
+        this.setState({ filter });
+        console.log(filter);
       }
-    // Handle deleting a movie by removing the movie with the matching ID from the state
-    // onDelate = (id) => {
-    //     this.setState(({data}) => {
-    //         const index = data.findIndex(c => c.id === id); // Find the index of the movie object with the matching ID
-    //         console.log(data);
-    //         if (index === -1) { // If the movie object wasn't found, return the original state
-    //             return { data };
-    //         }
-    //         data.splice(index, 1); // Remove the movie object with the matching ID from the state
-    //         return { data };
-    //     });
-    // };
+      
 
     // Render the main App component
     render() {
-        const { data,term } = this.state
+        const { data, term, filter } = this.state
         const allMoviesCount = data.length
         const favoriteMoviesCount = data.filter(c => c.favourite === true).length
-        const visibleData =this.searchHandle(data,term)
+        const visibleData = this.filterHandler(this.searchHandle(data, term), filter)
         return (
             <div className="app font-monospace">
                 <div className="content">
                     <AppInfo allMoviesCount={allMoviesCount} favoriteMoviesCount={favoriteMoviesCount} />
                     <div className='cearch_panel'>
                         <SearchPanel UpdateTermHandler={this.UpdateTermHandler} />
-                        <AppFilter />
+                        <AppFilter  UpdateFilterHandler={this.UpdateFilterHandler} />
                     </div>
                     <MovieList data={visibleData} onDelate={this.onDelete} onTogleProp={this.onTogleProp} />
                     <MoviesAddForm addForm={this.addForm} />
