@@ -14,9 +14,9 @@ class App extends Component {
         this.state = {
             data: [
                 { name: "Avanger", viewers: '800', favourite: false, id: 1, like: false },
-                { name: "Breaking bad", viewers: '600', favourite: true, id: 2, like: true },
+                { name: "Breaking bad", viewers: '600', favourite: false, id: 2, like: false },
                 { name: "Spider man", viewers: '545', favourite: false, id: 3, like: false },
-                { name: "John ", viewers: '785', id: 4, like: false, favourite: true },
+                { name: "John ", viewers: '785', id: 4, like: false, favourite: false },
             ]
         }
     }
@@ -30,20 +30,21 @@ class App extends Component {
     };
 
     addForm = item => {
-        const newItem = { name: item.name, viewers: this.viewers, id: uuidv4(), like: false, favourite: false }
+        const newItem = { name: item.name, viewers: item.viewers, id: uuidv4(), like: false, favourite: false }
         this.setState(({ data }) => ({
-            data: [...data, { ...newItem, }],
+            data: [...data, newItem],
         }))
     }
 
-    onTogleFavourite = id => {
+    onTogleProp = (id,prop) => {
+        console.log(prop);
         this.setState(({ data }) => ({
             data: data.map(item => {
                 if (item.id === id) {
-                    return { ...item, favourite: !item.favourite }
+                    return { ...item, [prop]:!item.prop }
                 }
                 return item
-            }, console.log(data))
+            })
         }))
     }
 
@@ -70,7 +71,7 @@ class App extends Component {
                         <SearchPanel />
                         <AppFilter />
                     </div>
-                    <MovieList data={data} onDelate={this.onDelete} onTogleFavourite={this.onTogleFavourite} />
+                    <MovieList data={data} onDelate={this.onDelete} onTogleProp={this.onTogleProp} />
                     <MoviesAddForm addForm={this.addForm} />
                 </div>
             </div>

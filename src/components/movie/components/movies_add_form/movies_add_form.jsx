@@ -5,7 +5,7 @@ class moviesAddForm extends Component {
     super(props)
     this.state = {
       name: "",
-      views: ""
+      views:""
     }
   }
 
@@ -17,7 +17,7 @@ class moviesAddForm extends Component {
 
   addFormHandle = e => {
     e.preventDefault()
-    this.props.addForm({ name: this.state.name, viewers: this.state.views, })
+    this.props.addForm({ name: this.state.name, viewers:this.state.views, })
     this.setState({
       name: '',
       views: ''
