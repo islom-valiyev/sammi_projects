@@ -1,73 +1,85 @@
-import { Component } from "react"
+// Import necessary modules and components
+import { Component } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import AppInfo from "../app_info/App_info"
-import SearchPanel from "../search_panel/search_panel"
-import AppFilter from "../app_filter/app_filter"
-import MovieList from '../movie_list/movie_list'
-import MoviesAddForm from '../movies_add_form/movies_add_form'
-import './App.css'
+import AppInfo from "../app_info/App_info";
+import SearchPanel from "../search_panel/search_panel";
+import AppFilter from "../app_filter/app_filter";
+import MovieList from '../movie_list/movie_list';
+import MoviesAddForm from '../movies_add_form/movies_add_form';
+import './App.css';
 
-
+// Define the main App component
 class App extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        // Initialize the state with an array of movie objects
         this.state = {
             data: [
-                { name: "Avanger", viewers: '800', favourite: false, id: 1, like: false },
-                { name: "Breaking bad", viewers: '600', favourite: false, id: 2, like: false },
-                { name: "Spider man", viewers: '545', favourite: false, id: 3, like: false },
-                { name: "John ", viewers: '785', id: 4, like: false, favourite: false },
+                { name: "Avenger", viewers: '800', favourite: false, id: 1, like: false },
+                { name: "Breaking Bad", viewers: '600', favourite: false, id: 2, like: false },
+                { name: "Spider-Man", viewers: '545', favourite: false, id: 3, like: false },
+                { name: "John", viewers: '785', id: 4, like: false, favourite: false },
             ]
-        }
+        };
     }
 
+    // Handle delete events by removing the movie with the corresponding ID from the state
     onDelete = (id) => {
         this.setState(({ data }) => {
+            // Create a new array with all elements except the one with the matching ID
             const newArray = data.filter(c => c.id !== id);
             console.log(newArray);
+            // Update the state with the new array
             return { data: data.filter(c => c.id !== id) };
         });
     };
 
+    // Handle adding new movies by creating a new movie object with a unique ID using uuidv4
     addForm = item => {
-        const newItem = { name: item.name, viewers: item.viewers, id: uuidv4(), like: false, favourite: false }
+        const newItem = { name: item.name, viewers: item.viewers, id: uuidv4(), like: false, favourite: false };
+        // Add the new movie object to the existing array of movies in the state
         this.setState(({ data }) => ({
             data: [...data, newItem],
-        }))
+        }));
     }
 
+    // Handle toggling properties (like and favourite) for a given movie object in the state
     onTogleProp = (id, prop) => {
         console.log(prop);
         this.setState(({ data }) => ({
             data: data.map(item => {
                 if (item.id === id) {
+                    // Toggle the specified property for the movie object with the matching ID
                     return { ...item, [prop]: !item[prop] }
                 }
+                // Return the original movie object if it doesn't match the ID
                 return item
             })
         }))
     }
-    //onDelete = (id) => {
+
+    // Handle deleting a movie by removing the movie with the matching ID from the state
+    // onDelate = (id) => {
     //     this.setState(({data}) => {
-    //         const index = data.findIndex(c => c.id === id); // id ga mos keluvchi element indeksi
+    //         const index = data.findIndex(c => c.id === id); // Find the index of the movie object with the matching ID
     //         console.log(data);
-    //         if (index === -1) { // agar element topilmagan bo'lsa
-    //             return { data }; // hech nima qilmaslik
+    //         if (index === -1) { // If the movie object wasn't found, return the original state
+    //             return { data };
     //         }
-    //         data.splice(index, 1); // topilgan indeksdagi elementni o'chirish
+    //         data.splice(index, 1); // Remove the movie object with the matching ID from the state
     //         return { data };
     //     });
     // };
 
-
+    // Render the main App component
     render() {
         const { data } = this.state
         const allMoviesCount = data.length
-        const favoriteMoviesCount = data.filter(c=> c.favourite===true).length
+        const favoriteMoviesCount = data.filter(c => c.favourite === true).length
         return (
             <div className="app font-monospace">
                 <div className="content">
-                    <AppInfo allMoviesCount={allMoviesCount}  favoriteMoviesCount={favoriteMoviesCount}/>
+                    <AppInfo allMoviesCount={allMoviesCount} favoriteMoviesCount={favoriteMoviesCount} />
                     <div className='cearch_panel'>
                         <SearchPanel />
                         <AppFilter />
@@ -79,6 +91,5 @@ class App extends Component {
         )
     }
 }
-
 
 export default App
