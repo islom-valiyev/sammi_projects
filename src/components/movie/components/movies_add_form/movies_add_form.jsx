@@ -1,12 +1,10 @@
 import './movies_add_form.css'
-import { v4 as uuidv4 } from 'uuid';
-
 import { Component } from 'react'
 class moviesAddForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: " ",
+      name: "",
       views: ""
     }
   }
@@ -16,12 +14,13 @@ class moviesAddForm extends Component {
       [e.target.name]: e.target.value
     })
   }
-  addFormHandle=e=>{
+
+  addFormHandle = e => {
     e.preventDefault()
-    this.props.addForm({name :this.state.name, viewers: this.state.views,id: uuidv4()})
+    this.props.addForm({ name: this.state.name, viewers: this.state.views, })
     this.setState({
       name: '',
-      views:' '
+      views: ''
     })
   }
 
