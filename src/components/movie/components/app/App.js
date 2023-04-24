@@ -21,7 +21,7 @@ class App extends Component {
                 { name: "John", viewers: '785', id: 4, like: false, favourite: false },
             ],
             term: '',
-            filter: 'mostviewers',
+            filter: 'all',
         };
     }
 
@@ -77,7 +77,7 @@ class App extends Component {
             case 'popular':
                 return arr.filter(c => c.like)
             case 'mostviewers':
-                return arr.filter(c => c.viewers > 500)
+                return arr.filter(c => c.viewers > 700)
             default:
                 return arr
         }
