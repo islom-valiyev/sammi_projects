@@ -36,18 +36,17 @@ class App extends Component {
         }))
     }
 
-    onTogleProp = (id,prop) => {
+    onTogleProp = (id, prop) => {
         console.log(prop);
         this.setState(({ data }) => ({
             data: data.map(item => {
                 if (item.id === id) {
-                    return { ...item, [prop]:!item.prop }
+                    return { ...item, [prop]: !item[prop] }
                 }
                 return item
             })
         }))
     }
-
     //onDelete = (id) => {
     //     this.setState(({data}) => {
     //         const index = data.findIndex(c => c.id === id); // id ga mos keluvchi element indeksi
@@ -63,10 +62,12 @@ class App extends Component {
 
     render() {
         const { data } = this.state
+        const allMoviesCount = data.length
+        const favoriteMoviesCount = data.filter(c=> c.favourite===true).length
         return (
             <div className="app font-monospace">
                 <div className="content">
-                    <AppInfo />
+                    <AppInfo allMoviesCount={allMoviesCount}  favoriteMoviesCount={favoriteMoviesCount}/>
                     <div className='cearch_panel'>
                         <SearchPanel />
                         <AppFilter />
