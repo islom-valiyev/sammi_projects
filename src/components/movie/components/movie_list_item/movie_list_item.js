@@ -14,7 +14,7 @@ const MovieListItem = (props) => {
                 <i className='fas fa-star'></i>
             </div>
         </li>
-    )
+    ) 
 }
 export default MovieListItem
 
