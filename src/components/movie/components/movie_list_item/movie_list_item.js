@@ -16,6 +16,8 @@ const MovieListItem = (props) => {
         </li>
     ) 
 }
+
+
 export default MovieListItem
 
 //////////////////// class way
