@@ -14,4 +14,5 @@ const MovieList = ({ data ,onDelate, onTogleProp}) => {
   )
 }
 
+
 export default MovieList
