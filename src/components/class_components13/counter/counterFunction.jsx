@@ -1,6 +1,6 @@
+import { useState,useEffect } from 'react'
 import './counter_new.css'
 
-import { useState } from 'react'
 const CounterFunction = () => {
 
     const [counter, setCount] = useState(0)
@@ -20,6 +20,26 @@ const CounterFunction = () => {
     const onTogleLoading = () => {
         setIsLogin(prevState => !prevState)
     }
+    useEffect(()=>{
+        console.log('toggle');
+        document.title = `counter ${counter}`
+        
+        return() => console.log('delate');
+    },[])
+
+
+    useEffect(()=>{
+        console.log('toggle');
+        document.title = `counter ${counter}`
+        
+    },[counter])
+
+
+    useEffect(()=>{
+        console.log('log');
+        document.title = `counter ${counter}`
+        
+    },[islogin])
 
 
     return (
@@ -32,12 +52,11 @@ const CounterFunction = () => {
                 <p className="counter ">{counter}</p>
             </div>
             <div>
-                {islogin? <p className='text-center mt-3' >Login</p> :null}
                 <div className="d-flex justify-content-center">
                 <button className='btn btn-primary ' onClick = {onTogleLoading}> TOGGLE </button>
+                {islogin? <h4 className='text-center mt-3' >Login</h4> :null}
                 </div>
             </div>
-
         </div>
     )
 }
