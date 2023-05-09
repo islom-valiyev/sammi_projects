@@ -1,62 +1,35 @@
-import { useState,useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import './counter_new.css'
+import CounterItem from './item-generete'
 
 const CounterFunction = () => {
-
     const [counter, setCount] = useState(0)
-    const [islogin , setIsLogin] = useState(true)
+    const [active, setActive] = useState(false)
 
     const handleClickIncrease = () => {
-        setCount(pervState => pervState + 1)
+        setCount(prevState => prevState + 1)
+    }
+    const onToggle = () => {
+        setActive(prevState => !prevState)
     }
 
-    const handleClickDecrease = () => {
-        setCount(pervState => pervState - 1)
-    }
-
-    const handleClickZero = () => {
-        setCount(0)
-    }
-    const onTogleLoading = () => {
-        setIsLogin(prevState => !prevState)
-    }
-    useEffect(()=>{
-        console.log('toggle');
-        document.title = `counter ${counter}`
-        
-        return() => console.log('delate');
-    },[])
-
-
-    useEffect(()=>{
-        console.log('toggle');
-        document.title = `counter ${counter}`
-        
+    const counterGenerate = useCallback(() => {
+        return new Array(counter).fill(" ").map((_, idx) => ` ${idx=== 0 ?idx+1 : idx} counter number ${idx}`)
     },[counter])
 
-
-    useEffect(()=>{
-        console.log('log');
-        document.title = `counter ${counter}`
-        
-    },[islogin])
-
+    const color = {
+        color: active ? 'blue' : 'red'
+    }
 
     return (
-        <div className="wrapper w-50 mx-auto mb-5" >
+        <div className="wrapper w-50 mx-auto mb-5">
             <h2 className="title">Counter</h2>
             <div className="counterContainer">
                 <button className="btn btn-success mx-3" onClick={handleClickIncrease}>Increase</button>
-                <button className="btn btn-danger mx-3" onClick={handleClickDecrease}>Decrease</button>
-                <button className="btn btn-success mx-3" onClick={handleClickZero}>Restart</button>
-                <p className="counter ">{counter}</p>
+                <button className="btn btn-danger mx-3" onClick={onToggle}>Toggle</button>
+                <p className="counter" style={color}>{counter}</p>
             </div>
-            <div>
-                <div className="d-flex justify-content-center">
-                <button className='btn btn-primary ' onClick = {onTogleLoading}> TOGGLE </button>
-                {islogin? <h4 className='text-center mt-3' >Login</h4> :null}
-                </div>
-            </div>
+            <CounterItem counterGenerate={counterGenerate} />
         </div>
     )
 }
