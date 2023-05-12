@@ -8,7 +8,7 @@ const MovieListItem = (props) => {
                 <button type='button' className='btn-cookie btn-sm' onClick={props.onTogleProp} data-toggle="favourite">
                     <i className='fas fa-cookie'></i>
                 </button>
-                <button type='button' className='btn-trash btn-sm' onClick={props.onDelate}>
+                <button type='button' className='btn-trash btn-sm' onClick={props.onDelete}>
                     <i className='fas fa-trash'></i>
                 </button>
                 <i className='fas fa-star'></i>

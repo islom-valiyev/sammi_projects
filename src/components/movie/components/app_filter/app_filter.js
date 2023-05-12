@@ -1,7 +1,7 @@
 import './app_filter.css';
 
 // Define the AppFilter component that takes two props: UpdateFilterHandler and filter
-const AppFilter = ({ UpdateFilterHandler, filter }) => {
+const AppFilter = ({ updateFilterHandler, filter }) => {
   // Render a div with class 'btn-group' and a series of buttons based on the btnsArr array
   return (
     <div className='btn-group'>
@@ -9,7 +9,7 @@ const AppFilter = ({ UpdateFilterHandler, filter }) => {
         <button
           key={btn.name} // Use the name property of the current button object as the key
           className={`btn ${filter === btn.name ? 'btn-dark' : 'btn-outline-dark'}`} // Conditionally apply the 'btn-dark' or 'btn-outline-dark' class based on the value of the filter prop
-          onClick={() => UpdateFilterHandler(btn.name)} // Call the UpdateFilterHandler function with the name property of the current button object as an argument when the button is clicked
+          onClick={() => updateFilterHandler(btn.name)} // Call the UpdateFilterHandler function with the name property of the current button object as an argument when the button is clicked
           type='button'
         >
           {btn.label}
