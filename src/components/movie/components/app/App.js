@@ -1,5 +1,5 @@
 // Import necessary modules and components
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import AppInfo from "../app_info/App_info";
 import SearchPanel from "../search_panel/search_panel";
@@ -10,14 +10,10 @@ import './App.css';
 
 
 const App = () => {
-    const [data, setData] = useState([
-        { name: "Avenger", viewers: '800', favourite: false, id: 1, like: false },
-        { name: "Breaking Bad", viewers: '600', favourite: false, id: 2, like: false },
-        { name: "Spider-Man", viewers: '545', favourite: false, id: 3, like: true },
-        { name: "John", viewers: '785', id: 4, like: false, favourite: false },
-    ])
+    const [data, setData] = useState([])
     const [term, setTerm] = useState('')
     const [filter, setFilter] = useState('all')
+    const [isLoading, setIsLoading] = useState(false)
 
     const onDelete = id => {
         const newArr = data.filter(c => c.id !== id);
@@ -66,6 +62,25 @@ const App = () => {
 
     const updateTermHandler = (term) => setTerm(term)
 
+    useEffect(() => {
+		setIsLoading(true)
+		fetch('https://jsonplaceholder.typicode.com/todos?_start=0&_limit=15')
+			.then(response => response.json())
+			.then(json => {
+				const newArr = json.map(item => ({
+					name: item.title,
+					id: item.id,
+					viewers: Math.floor(Math.random() * (900 - 133 + 1)) + 133,
+					favourite:  Math.random() < 0.5,
+					like: Math.random() < 0.5,
+				}))
+				setData(newArr)
+			})
+			.catch(err => console.log(err))
+			.finally(() => setIsLoading(false))
+	}, [])
+
+
     return (
         <div className="app font-monospace">
             <div className="content">
@@ -74,6 +89,7 @@ const App = () => {
                     <SearchPanel updateTermHandler={updateTermHandler} />
                     <AppFilter updateFilterHandler={updateFilterHandler} />
                 </div>
+                {isLoading && 'Loading..'}
                 <MovieList data={filterHandler(searchHandle(data, term), filter)} onDelete={onDelete} onToggleProp={onToggleProp} />
                 <MoviesAddForm addForm={addForm} />
             </div>
