@@ -21,6 +21,9 @@ const App = () => {
         setData(newArr)
     }
 
+
+
+    
     const addForm = item => {
         const newItem = { name: item.name, viewers: item.viewers, id: uuidv4(), like: false, favourite: false };
         const newArr = [...data, newItem]
