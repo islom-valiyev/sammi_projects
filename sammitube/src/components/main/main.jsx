@@ -3,6 +3,7 @@ import { Button } from "@mui/material"
 const Main = () => {
   return (
 <Link to={'channel'}>
+  Navbar
 <Button>
     channel
 </Button>
@@ -11,3 +12,4 @@ const Main = () => {
 }
 
 export default Main
+ 

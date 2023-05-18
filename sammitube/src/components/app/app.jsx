@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Box } from "@mui/material";
-import { Main } from '../'
-import { Channel } from '../'
+import { Main, Channel } from '../'
 
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
         <Box>
             <Routes>
                 <Route path='/' element={<Main />} />
-                <Route path='/channel' element={<Channel />}/>
+                <Route path='/channel/:id' element={<Channel />} />
 
             </Routes>
         </Box>
