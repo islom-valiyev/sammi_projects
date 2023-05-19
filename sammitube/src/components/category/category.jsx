@@ -6,7 +6,7 @@ const Category = ({ selactedCategoryHandle, selactedCategory }) => {
         <Stack direction={'row'} sx={{ height: 'auto', overflowX: 'scroll ' }}>
             {category.map(item => (
                 <button key={item.name} className="category-btn" style={{ borderRadius: '0', backgroundColor: item.name === selactedCategory && colors.secondary, color: item.name === selactedCategory && 'white' }} onClick={() => selactedCategoryHandle(item.name)}>
-                    <span style={{ color: colors.secondary, marginRight: '15px' }}>{item.icon}</span>
+                    <span style={{marginRight: '15px', color: item.name=== selactedCategory ? '#fff' :colors.secondary}}>{item.icon}</span>
                     <span style={{ opacity: '1', }}>{item.name}</span>
                 </button>
             ))
