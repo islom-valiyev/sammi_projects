@@ -13,7 +13,7 @@ const Main = () => {
   // console.log(process.env.REACT_APP_PUBLIC_KEY);
 
   useEffect(() => {
-    ApiService.fetching('search').then(data => setVideos(data))
+    ApiService.fetching(`search?part=snippet&q=Music`).then(data => setVideos(data.items))
 
   }, [])
 
@@ -31,6 +31,8 @@ const Main = () => {
           </Typography>
           <Videos videos={videos} />
           {videos.items ? videos.items.map(c => c.kind) : 'loading...'}
+          {/* {videos.items.map(c => c.kind)} */}
+
         </Container>
       </Box>
     </Stack>
