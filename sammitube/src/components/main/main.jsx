@@ -13,7 +13,7 @@ const Main = () => {
   // console.log(process.env.REACT_APP_PUBLIC_KEY);
 
   useEffect(() => {
-    ApiService.fetching(`search?part=snippet&q=Music`).then(data => setVideos(data.items))
+    ApiService.fetching(`search?part=snippet&q=Sport`).then(data => setVideos(data.items))
 
   }, [])
 
