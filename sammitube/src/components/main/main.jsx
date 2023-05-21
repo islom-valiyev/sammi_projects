@@ -5,7 +5,7 @@ import { Category, Videos } from "../index";
 import { ApiService } from '../../service/api.service'
 const Main = () => {
 
-  const [selactedCategory, setSelactedCategory] = useState("new");
+  const [selactedCategory, setSelactedCategory] = useState("New");
 
   const selactedCategoryHandle = (category) => setSelactedCategory(category);
   const [videos, setVideos] = useState([])
@@ -13,9 +13,8 @@ const Main = () => {
   // console.log(process.env.REACT_APP_PUBLIC_KEY);
 
   useEffect(() => {
-    ApiService.fetching(`search?part=snippet&q=Sport`).then(data => setVideos(data.items))
-
-  }, [])
+    ApiService.fetching(`search?part=snippet&q=${selactedCategory}`).then(data => setVideos(data.items))
+  }, [selactedCategory])
 
   return (
     <Stack>

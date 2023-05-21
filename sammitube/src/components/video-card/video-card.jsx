@@ -4,13 +4,12 @@ import moment from 'moment'
 import { CheckCircle } from "@mui/icons-material";
 
 const VideoCard = ({ video }) => {
-    console.log(video);
-    
+
     const showCheckCircle = Math.random() < 0.5;
 
     return (
-        <Card sx={{ width: '320px', boxShadow: 'none', borderRadius: 0 }}>
-            <CardMedia image={video?.snippet?.thumbnails?.high?.url} alt={video?.snippet?.title} sx={{ width: '360px,', height: '180px' }} />
+        <Card sx={{ width: { xs: '100%', sm: '360px', md: '320px' }, boxShadow: 'none', borderRadius: 0 }}>
+            <CardMedia image={video?.snippet?.thumbnails?.high?.url} alt={video?.snippet?.title} sx={{ width: {xs:'100%' , sm :'360px', md:'320px'}, height: '180px' }} />
             <CardContent sx={{ background: colors.primary, height: '200px', position: 'relative' }}>
                 <>
                     <Typography my={'5'} sx={{ opacity: '4' }}>
