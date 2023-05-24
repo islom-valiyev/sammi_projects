@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { colors } from "../../constants/colors";
 import { Stack, Box, Container, Typography } from "@mui/material";
-import { Category, Videos } from "../index";
+import { Category, Videos , Loader} from "../index";
 import { ApiService } from '../../service/api.service'
 const Main = () => {
 
@@ -29,7 +29,7 @@ const Main = () => {
 						<span style={{ color: colors.secondary }}>videos</span>
 					</Typography>
 					<Videos videos={videos} />
-					{videos.items ? videos.items.map(c => c.kind) : 'loading...'}
+					{videos.items ? videos.items.map(c => c.kind) :<Loader/>}
 					{/* {videos.items.map(c => c.kind)} */}
 
 				</Container>

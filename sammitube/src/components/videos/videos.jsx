@@ -1,8 +1,7 @@
 import { Box, Stack,  } from "@mui/material"
-import { VideoCard, ChannelCard,Loader } from '../index'
+import { VideoCard, ChannelCard } from '../index'
 
 const Videos = ({ videos }) => {
-
 	return (
 		<Stack width={'100 %'} direction={'row'} flexWrap={'wrap'} justifyContent={'start'} alignItems={'center'} gap={2}>
 			{videos.map(item => (			
