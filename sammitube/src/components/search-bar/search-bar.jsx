@@ -13,9 +13,7 @@ const SearchBar = () => {
 		if (value) {
 			navigate(`/search/${value}`)
 			setValue('')
-
 		}
-
 	};
 	return (
 		<Paper

@@ -48,5 +48,4 @@ const VideoCard = ({ video }) => {
 		</Card>
 	)
 }
-
 export default VideoCard

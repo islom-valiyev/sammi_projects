@@ -27,9 +27,7 @@ const VideoDetail = () => {
 		}
 		getData()
 	}, [id])
-
 	if (!videoDetail?.snippet) return <Loader />
-
 	return (
 		<Box minHeight={'90vh'} mb={10}>
 			<Box display={'flex'} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>

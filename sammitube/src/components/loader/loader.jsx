@@ -9,5 +9,4 @@ const Loader = () => {
 		</Box>
 	)
 }
-
 export default Loader

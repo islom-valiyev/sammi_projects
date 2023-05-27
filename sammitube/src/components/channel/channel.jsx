@@ -1,13 +1,11 @@
-import {  useParams, } from "react-router-dom"
+import { useParams, } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Box, Container } from "@mui/material"
 import { ApiService } from "../../service/api.service"
-import { ChannelCard ,Videos} from '../index'
+import { ChannelCard, Videos } from '../index'
 const Channel = () => {
 	const [channelDetails, setchannelDetails] = useState()
 	const [videos, setVideos] = useState([])
-
-
 	useEffect(() => {
 		const getData = async () => {
 			try {
@@ -23,7 +21,6 @@ const Channel = () => {
 	})
 	const { id } = useParams()
 	console.log(videos);
-
 	return (
 		<Box minHeight={'95vh'} mt={'10vh'}>
 			<Box>
@@ -32,10 +29,9 @@ const Channel = () => {
 			</Box>
 			<Container maxWidth={'90%'}>
 				{' '}
-				<Videos videos={videos}/>
+				<Videos videos={videos} />
 			</Container>
 		</Box>
 	)
 }
-
 export default Channel

@@ -51,5 +51,4 @@ const ChannelCard = ({ video, marginTop }) => {
 		</Box>
 	)
 }
-
 export default ChannelCard
