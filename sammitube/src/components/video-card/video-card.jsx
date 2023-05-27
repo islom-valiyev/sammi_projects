@@ -24,7 +24,7 @@ const VideoCard = ({ video }) => {
                     </Typography>
                     <Typography variant="subtitle1" sx={{ opacity: '.6' }}> {video?.snippet?.description.slice(0, 50)}</Typography>
                 </Link>
-                <>
+                <Link to={`/channel/${video?.snippet?.thumbnails?.hihg?.url}`}>
                     <Stack direction={'row'} position={'absolute'} bottom={'10px'} alignItems={'center'} gap={'5px'}>
                         <Avatar src={video?.snippet?.thumbnails?.high?.url} />
                         <Typography variant={'subtitle2'} color={'gray'}>
@@ -32,7 +32,7 @@ const VideoCard = ({ video }) => {
                             {showCheckCircle && <CheckCircle sx={{ fontSize: '12px', color: "gray", ml: "5px" }} />}
                         </Typography>
                     </Stack>
-                </>
+                </Link>
             </CardContent>
         </Card>
     )
