@@ -45,7 +45,7 @@ const VideoDetail = () => {
 							key={idx}
 							sx={{ marginTop: '10px', cursor: 'pointer', ml: '10px' }}
 							deleteIcon={<Tag />}
-							onDelete={() => {}}
+							onDelete={() => { }}
 							variant='outlined'
 						/>
 					))}

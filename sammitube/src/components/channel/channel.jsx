@@ -6,7 +6,7 @@ const Channel = () => {
   return (
     <Link to={'/'}>
       <Button>
-        main
+aaa
       </Button>
     </Link>
   )
