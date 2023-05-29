@@ -1,0 +1,40 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        // "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.defaultFormatter": null,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "jshint.options": {
+        "esversion": 6
+    },
+    "kite.showWelcomeNotificationOnStartup": false,
+    "files.autoSave": "afterDelay",
+    "workbench.iconTheme": "city-lights-icons-vsc",
+    "editor.formatOnSave": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "git.autofetch": true,
+    "jshint.config": "",
+    "files.associations": {
+        "*.js": "javascript"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "42header.email": "",
+    "42header.username": "zosobiro",
+    "window.zoomLevel": 2,
+    "git.postCommitCommand": "push",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "remote.SSH.configFile": "/home/zoirj0n/Downloads/id_rsa.pub",
+    "git.confirmSync": false
+}
