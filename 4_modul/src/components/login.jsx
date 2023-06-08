@@ -1,4 +1,4 @@
-import { icon } from "../constatnts"
+import { logo } from "../constatnts"
 import { Input } from "../ui/index"
 import { useState } from "react"
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
 
       <main class="form-signin w-25 m-auto ">
         <form>
-          <img class="mb-4" src={icon} alt="" width="72" height="57" />
+          <img class="mb-4" src={logo} alt="" width="72" height="57" />
           <h1 class="h3 mb-3 fw-normal">Please login</h1>
           <Input label={'Email address'} type={'email'} state={email} setState={setEmail} />
           <Input label={'Password'} type={'password'} state={password} setState={setPassword} />
