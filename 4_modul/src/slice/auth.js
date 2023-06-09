@@ -11,7 +11,7 @@ export const AuthSlice = createSlice({
     initialState,
     reducers: {
         loginUserStart: state => { 
-            state.loggedIn =true
+            state.isLoading =true
         },
         loginUserSuccess: state => { },
         loginUserFailure: state => { }
