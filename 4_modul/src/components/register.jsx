@@ -1,10 +1,21 @@
 import { logo } from "../constatnts"
 import { Input } from "../ui/index"
 import { useState } from "react"
+import { registerUserStart } from '../slice/auth'
+import { useSelector, useDispatch } from 'react-redux'
+
+
 const Register = () => {
   const [name, setname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { isLoading } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  const loginHandler = e => {
+    e.preventDefault()
+    dispatch(registerUserStart())
+  }
 
   return (
     <div className="text-center mt-5">
@@ -18,7 +29,7 @@ const Register = () => {
           <Input label={'Password'} type={'password'} state={password} setState={setPassword} />
 
 
-          <button className="btn btn-primary w-100 py-2" type="submit">Register</button>
+          <button className="btn btn-primary w-100 py-2" type="submit" disabled={isLoading} onClick={loginHandler}> {isLoading ? 'loading... ' : 'Register'}  </button>
         </form>
       </main>
     </div>
