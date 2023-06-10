@@ -20,7 +20,11 @@ const Register = () => {
     try {
       const respose = await Authservice.userRegister(user)
       dispatch(registerUserSuccess())
-      console.log(respose);
+      setname('')
+      setEmail('')
+      setPassword('')
+
+      console.log(respose.data);
     } catch (error) {
       dispatch(registerUserFailure())
     }
@@ -33,9 +37,9 @@ const Register = () => {
         <form>
           <img className="mb-4" src={logo} alt="" width="72" height="57" />
           <h1 className="h3 mb-3 fw-normal">Please Register</h1>
-          <Input label={'Username'} type={'text'} state={name} setState={setname} />
-          <Input label={'Email address'} type={'email'} state={email} setState={setEmail} />
-          <Input label={'Password'} type={'password'} state={password} setState={setPassword} />
+          <Input label={'Username'} type={'text'} value={name} setState={setname} />
+          <Input label={'Email address'} type={'email'} value={email} setState={setEmail} />
+          <Input label={'Password'} type={'password'} value={password} setState={setPassword} />
 
 
           <button className="btn btn-primary w-100 py-2" type="submit" disabled={isLoading} onClick={loginHandler}> {isLoading ? 'loading... ' : 'Register'}  </button>
