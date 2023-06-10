@@ -20,7 +20,7 @@ const Register = () => {
     try {
       const respose = await Authservice.userRegister(user)
       dispatch(registerUserSuccess())
-      console.log(respose.data);
+      console.log(respose);
     } catch (error) {
       dispatch(registerUserFailure())
     }
