@@ -30,7 +30,7 @@
     },
     "42header.email": "",
     "42header.username": "zosobiro",
-    "window.zoomLevel": 3,
+    "window.zoomLevel": 2,
     "git.postCommitCommand": "push",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[javascriptreact]": {

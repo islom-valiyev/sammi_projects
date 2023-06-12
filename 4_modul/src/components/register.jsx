@@ -3,6 +3,8 @@ import { icon } from "../constatnts"
 import { Input } from '../ui'
 import { useSelector, useDispatch } from 'react-redux'
 import { signUserFailure, signUserStart, signUserSuccess } from '../slice/auth'
+import { ValidationError } from './index'
+
 import AuthService from '../service/auth'
 
 const Register = () => {
@@ -33,7 +35,7 @@ const Register = () => {
         <form>
           <img className='mb-2' src={icon} alt='' width='72' height='60' />
           <h1 className='h3 mb-3 fw-normal'>Please register</h1>
-
+          <ValidationError />
           <Input label={'Username'} state={name} setState={setName} />
           <Input label={'Email address'} state={email} setState={setEmail} />
           <Input label={'Password'} type={'password'} state={password} setState={setPassword} />
