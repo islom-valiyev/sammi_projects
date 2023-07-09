@@ -1,4 +1,3 @@
-
 const Input = ({ label, type = 'text', state, setState }) => {
     return (
         <div>  <div className="form-floating">
